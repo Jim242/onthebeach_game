@@ -7,9 +7,8 @@ import "./styles.css";
 export default function Card({
   handleClick,
   id,
+  type,
   flipped,
-  back,
-  front,
   height,
   width
 }) {
@@ -25,7 +24,7 @@ export default function Card({
       <div className="flipper">
         <img
           className={flipped ? "front" : "back"}
-          src={flipped ? front : back}
+          src={flipped ? `/img/${type}.png` : `/img/back.png`}
           style={{ width, height }}
         />
       </div>
@@ -37,8 +36,7 @@ Card.prototype = {
   handleClick: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   flipped: PropTypes.bool.isRequired,
-  back: PropTypes.string.isRequired,
-  front: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired
 };
