@@ -3,9 +3,16 @@ import PropTypes from "prop-types";
 
 import Card from "../card";
 
-import './styles.css';
+import "./styles.css";
 
-export default function Board({ dimension, cards, flipped, handleClick }) {
+export default function Board({
+  disabled,
+  dimension,
+  cards,
+  flipped,
+  solved,
+  handleClick
+}) {
   return (
     <div className="board">
       {cards.map(card => (
@@ -16,7 +23,9 @@ export default function Board({ dimension, cards, flipped, handleClick }) {
           width={dimension / 4.5}
           height={dimension / 4.5}
           flipped={flipped.includes(card.id)} // id array to see if card is flipped
-          handleClick={() => handleClick(card.id)}
+          solved={solved.includes(card.id)}
+          handleClick={handleClick}
+          disabled={disabled || solved.includes(card.id)}
         />
       ))}
     </div>
@@ -24,8 +33,10 @@ export default function Board({ dimension, cards, flipped, handleClick }) {
 }
 
 Board.prototype = {
+  disabled: PropTypes.bool.isRequired,
   dimension: PropTypes.number.isRequired,
   cards: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   flipped: PropTypes.arrayOf(PropTypes.number).isRequired,
+  solved: PropTypes.arrayOf(PropTypes.number).isRequired,
   handleClick: PropTypes.func.isRequired
 };
