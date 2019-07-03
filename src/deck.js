@@ -14,7 +14,7 @@ export default function initialiseDeck() {
     let id = 0
     // matches the public img
     // will switch for beach theme later
-    const cards = ['react', 'reactu', 'redux', 'vue', 'angular', 'javascript', 'ruby', 'rails']
+    const cards = ['sun', 'sandCastle', 'waves', 'towel', 'beachBall', 'sunscreen', 'lounger', 'suitcase']
     .reduce((acc, type) => {
         //push to js cards into acc array so we can match the cards
         acc.push({

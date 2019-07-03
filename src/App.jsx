@@ -74,8 +74,8 @@ export default function App() {
 
   return (
     <div>
-      <h1>Memory</h1>
-      <h2>Can you remember where the cards are?</h2>
+      <h1>Ready for the beach?</h1>
+      <h2>Match all of the cards</h2>
       <Board
         dimension={dimension}
         cards={cards}
