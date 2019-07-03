@@ -16,13 +16,17 @@ export default function App() {
     //second argument, a value to watch to see if needs to be called again
   }, []);
 
+  useEffect(() => {
+    preloadImages();
+  }, cards)
+
   //board will alter size dependant on the screen area
   useEffect(() => {
     const resizeListener = window.addEventListener("resize", resizeBoard);
     return () => window.removeEventListener("resize", resizeListener);
   });
 
-  const handleClick = (id) => {
+  const handleClick = id => {
     setDisabled(true);
     if (flipped.length === 0) {
       setFlipped([id]);
@@ -32,11 +36,18 @@ export default function App() {
       setFlipped([flipped[0], id]);
       if (isMatch(id)) {
         setSolved([...solved, flipped[0], id]);
-        resetCards()
+        resetCards();
       } else {
-        setTimeout(resetCards, 1000)
+        setTimeout(resetCards, 1000);
       }
     }
+  };
+
+  const preloadImages = () => {
+    cards.map(card => {
+      const src = `/img/${card.type}.png`;
+      new Image().src = src;
+    });
   };
 
   const resetCards = () => {
