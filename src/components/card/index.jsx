@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./styles.css";
 
-// Destructure {} the props to gain instance access to them
+//Destructure {} the props to gain instance access to them
 export default function Card({
   handleClick,
   id,

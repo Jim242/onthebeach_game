@@ -9,23 +9,29 @@ export default function App() {
   const [solved, setSolved] = useState([]);
   const [disabled, setDisabled] = useState(false);
 
-  //similar to didMount
+  //Similar to didMount of react
   useEffect(() => {
     resizeBoard();
     setCards(initialiseDeck());
-    //second argument, a value to watch to see if needs to be called again
+    //Second argument, a value to watch to see if needs to be called again
   }, []);
 
   useEffect(() => {
     preloadImages();
   }, cards)
 
-  //board will alter size dependant on the screen area
+  //The board will alter size dependant on the screen area of the user
   useEffect(() => {
     const resizeListener = window.addEventListener("resize", resizeBoard);
     return () => window.removeEventListener("resize", resizeListener);
   });
 
+  /*The handle click will do alot of the heavy lifting
+  First it will make the first clicked card disabled so it stays facing up
+  As well as storing this in the flipped array props
+  The second card is flipped and the two ids now in the flipped array are checked
+  If the correct they stay disabled but cleared from the flipped array
+  If incorrect match they are unDisabled and flipped back again*/
   const handleClick = id => {
     setDisabled(true);
     if (flipped.length === 0) {
@@ -43,6 +49,7 @@ export default function App() {
     }
   };
 
+  //On the page load all of the images are preloaded to stop loading flashes when the cards are flipped
   const preloadImages = () => {
     cards.map(card => {
       const src = `/img/${card.type}.png`;
