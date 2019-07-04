@@ -5,7 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: #ffffff;
+  background-color: #ADD7F6;
   color: #e7e7e7;
   margin: 0 auto;
   padding: 1em 2em;
@@ -30,13 +30,13 @@ h4 {
 
 h1 {
   font-size: 2.2em;
-  color: #0ba5f8;
+  color: #363537;
 
 }
 
 h2 {
   font-size: 1.5em;
-  color: #b342a9;
+  color: #363537 ;
 }
 
 h3 {
